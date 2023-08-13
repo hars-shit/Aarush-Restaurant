@@ -1,0 +1,13 @@
+body {
+  color: rgb(102, 102, 102);
+  font-size: 14px;
+  line-height: 1.80857;
+  font-weight: normal;
+  overflow-x: hidden;
+  background-image: url(./assets//body-bg.png);
+  height: auto;
+  background-size: 100% 100%;
+  font-family: Sen, sans-serif;
+  background-repeat: no-repeat;
+  margin: 0;
+}
