@@ -3,7 +3,7 @@ import React from 'react'
 
 const Image=styled(Box)`
 
-background-image:url('src/assets/contact-bg.png');
+background-image:url('/assets/contact-bg.png');
 width: 100%;
 text-align: center;
 height: auto;
