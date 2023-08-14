@@ -1,7 +1,8 @@
 import { Box, Button, Typography } from "@mui/material";
-import React from "react";
+import React, { useRef, useState } from "react";
 import Data from "../../DB/data";
 import styled from "@emotion/styled";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled(Box)({
     marginTop:40,
@@ -64,18 +65,25 @@ const Container = styled(Box)({
 });
 
 const Item = () => {
+  const navigate=useNavigate();
+  const handleClick=(name)=>{
+    let route=name.toLowerCase();
+    console.log(route);
+    navigate(`/${route}`);
+   
+  }
   return (
     <Container>
         
       {Data.map((item) => {
         return (
-          <Box>
+          <Box key={Math.random()}>
             {/* for image  */}
             <Box>
               <img src={item.img} alt="" />
             </Box>
-            <Typography>{item.title}</Typography>
-            <Button>{item.button}</Button>
+            <Typography >{item.title}</Typography>
+            <Button onClick={()=>handleClick(item.title)}>{item.button}</Button>
           </Box>
         );
       })}
