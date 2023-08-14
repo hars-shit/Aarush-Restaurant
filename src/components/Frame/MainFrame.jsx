@@ -4,6 +4,8 @@ import {BiSearchAlt2} from 'react-icons/bi'
 import Item from '../Items/Item'
 import Customer from '../Items/Customer'
 import SignUp from '../Items/SignUp'
+import UperFooter from '../Footer/UperFooter'
+import LowerFooter from '../Footer/LowerFooter'
 
 const Header=styled(Box)({
     width: '70%',
@@ -162,6 +164,8 @@ const MainFrame=()=> {
         <Item />
         <Customer />
         <SignUp />
+        <UperFooter />
+        <LowerFooter />
     </Main>
   )
 }
