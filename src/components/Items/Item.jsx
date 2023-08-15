@@ -70,7 +70,7 @@ const Item = () => {
     let route=name.toLowerCase();
     console.log(route);
     navigate(`/${route}`);
-   
+
   }
   return (
     <Container>

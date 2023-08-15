@@ -5,6 +5,7 @@ const Footer=styled(Box)({
     width:'100%',
     background:'rgb(142, 181, 11)',
     height:'2rem',
+    overflow:'hidden',
     display:'flex',
     margin:'0px 0px',
     justifyContent:'center',
