@@ -82,9 +82,9 @@ const Order=styled(Box)({
     const handleClick=()=>{
         navigate('/delivery')
     }
-    const handleSend=()=>{
-        window.location.reload();
-    }
+    // const handleSend=()=>{
+    //     window.location.reload();
+    // }
   return (
     <Image>
         <Heading>
@@ -96,7 +96,7 @@ const Order=styled(Box)({
             <Field placeholder='Email'/>
             <Message placeholder='Message'/>
         </Input>
-        <Btn onClick={handleSend}>
+        <Btn >
             SEND
         </Btn>
         {/* for order  */}
@@ -104,7 +104,7 @@ const Order=styled(Box)({
         <Typography>
             ORDER BEST FOOD AT TIME
         </Typography>
-        <Btn onClick={handleClick}>
+        <Btn >
             ORDER NOW
         </Btn>
         </Order>

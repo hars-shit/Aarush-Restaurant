@@ -14,17 +14,17 @@ const Amount=styled(Box)({
     gap:15
   })
 const FoodDelivery=({item}) =>{
-   
     const [amount,setAmout]=useState(1);
     const handleDecrease=()=>{
         if(amount > 1){
-
+            
             setAmout(amount-1);
         }
-      }
-      const handleIncrease=()=>{
+    }
+    const handleIncrease=()=>{
         setAmout(amount+1);
-      }
+    }
+    let cost=amount * item.pay
   return (
     <Card sx={{ display: 'flex',width:345,height:140 }} key={item.id}>
     <CardMedia
@@ -42,7 +42,7 @@ alt="Live from space album cover"
    {item.heading}
  </Typography>
  <Typography fontSize={20}   component="div" marginTop={0.5} style={{display:'flex',alignItems:'center'}}>
-   <BiRupee fontSize={25}/>{item.pay}
+   <BiRupee fontSize={25}/>{cost}
  </Typography>
  <Purchase>
    <Typography  width={100}>
@@ -53,11 +53,11 @@ alt="Live from space album cover"
        }
        </Typography>
        <Amount>
-    <Typography onClick={handleDecrease} style={{fontSize:30,fontWeight:700}}>-</Typography>
+    <Typography onClick={handleDecrease} style={{cursor:'pointer',fontSize:30,fontWeight:700}}>-</Typography>
     
         <Typography>{amount}</Typography>
     
-    <Typography onClick={handleIncrease} style={{fontSize:18,fontWeight:700}}>+</Typography>
+    <Typography onClick={handleIncrease} style={{cursor:'pointer',fontSize:18,fontWeight:700}}>+</Typography>
        </Amount>
  </Purchase>
 </CardContent>
