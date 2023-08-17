@@ -72,7 +72,7 @@ const Request=styled(Typography)({
   fontSize:14
 })
 const Dining=()=> {
-  const [purchase,setPurchase]=useState(false);
+  
  
  
  

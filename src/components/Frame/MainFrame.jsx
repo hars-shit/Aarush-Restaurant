@@ -6,6 +6,7 @@ import Customer from '../Items/Customer'
 import SignUp from '../Items/SignUp'
 import UperFooter from '../Footer/UperFooter'
 import LowerFooter from '../Footer/LowerFooter'
+import { useNavigate } from 'react-router-dom'
 
 const Header=styled(Box)({
     width: '70%',
@@ -126,6 +127,10 @@ const QuickSearch=styled(Typography)({
   }
 })
 const MainFrame=()=> {
+    const navigate=useNavigate();
+    const handleClick=()=>{
+        navigate('/delivery')
+    }
   return (
     <Main>
         {/* for Banner  */}
@@ -154,7 +159,7 @@ const MainFrame=()=> {
 
         {/* for order button  */}
         <Bag>
-        <Click>
+        <Click onClick={handleClick}>
             Order Now
         </Click>
         <QuickSearch>

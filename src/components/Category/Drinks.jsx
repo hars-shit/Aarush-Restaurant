@@ -31,9 +31,6 @@ const Item = styled(Box)({
   gap:50
 })
 const Drinks=()=> {
-  const [purchase,setPurchase]=useState(false);
- 
- 
  
   return (
     <Container>
@@ -52,7 +49,7 @@ const Drinks=()=> {
     {
       drinks.map(item=>{
         return(
-          <Cards item={item}  purchase={purchase} setPurchase={setPurchase}/>
+          <Cards item={item} />
         
 
         )

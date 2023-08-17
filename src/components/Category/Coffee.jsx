@@ -30,10 +30,7 @@ const Item = styled(Box)({
   alignItems:'center',
   gap:50
 })
-const Coffee=()=> {
-  const [purchase,setPurchase]=useState(false);
- 
- 
+const Coffee=()=> { 
  
   return (
     <Container>
@@ -52,7 +49,7 @@ const Coffee=()=> {
     {
      coffee.map(item=>{
         return(
-          <Cards item={item}  purchase={purchase} setPurchase={setPurchase}/>
+          <Cards item={item} />
         
 
         )

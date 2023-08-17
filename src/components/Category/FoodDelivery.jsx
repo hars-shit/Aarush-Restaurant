@@ -1,33 +1,30 @@
 import React, { useState } from 'react'
-import { Box, Card, CardContent, CardMedia, IconButton, Typography, styled } from '@mui/material'
-import { useTheme } from '@mui/material/styles';
-import {BiSolidCart,BiSolidCartAdd} from 'react-icons/bi'
+import { Box, Card, CardContent, CardMedia, Typography, styled } from '@mui/material'
 import {AiFillStar} from 'react-icons/ai'
 import {BiRupee} from 'react-icons/bi'
-import { useDispatch } from 'react-redux';
-import { slice1_Pop, slice1_Push } from '../../store/slice/breakfastSlice';
-
-const Purchase=styled(Box)({
+const Amount=styled(Box)({
+    display:'flex',
+    justifyContent:'center',
+    alignItems:'center',
+    gap:15
+  })
+  const Purchase=styled(Box)({
     display:'flex',
     alignItems:'center',
-    gap:30
-  
-    
+    gap:15
   })
-const Cards=({item})=> {
-  const dispatch=useDispatch();
-  const[purchase,setPurchase]=useState(false)
-  const handlePop=(item)=>{
-    setPurchase(false);
-    dispatch(slice1_Pop(item))
-    console.log("pop",item)
-  }
-  const handlePush=(item)=>{
-    setPurchase(true)
-    dispatch(slice1_Push(item))
-    console.log("push",item)
-  }
-    // const theme = useTheme();
+const FoodDelivery=({item}) =>{
+   
+    const [amount,setAmout]=useState(1);
+    const handleDecrease=()=>{
+        if(amount > 1){
+
+            setAmout(amount-1);
+        }
+      }
+      const handleIncrease=()=>{
+        setAmout(amount+1);
+      }
   return (
     <Card sx={{ display: 'flex',width:345,height:140 }} key={item.id}>
     <CardMedia
@@ -55,20 +52,19 @@ alt="Live from space album cover"
         ))
        }
        </Typography>
-       <Typography>
-        {  
-        purchase ? (<BiSolidCartAdd onClick={()=>handlePop(item)} style={{fontSize:25,color:'rgb(142, 181, 11)'}}/>) :(<BiSolidCart onClick={()=>handlePush(item)}  style={{fontSize:25}}/>)
-        }
-         
-       </Typography>
+       <Amount>
+    <Typography onClick={handleDecrease} style={{fontSize:30,fontWeight:700}}>-</Typography>
+    
+        <Typography>{amount}</Typography>
+    
+    <Typography onClick={handleIncrease} style={{fontSize:18,fontWeight:700}}>+</Typography>
+       </Amount>
  </Purchase>
 </CardContent>
 
 </Box>
 
     </Card>
-
-
   )
 }
-export default Cards
+export default FoodDelivery

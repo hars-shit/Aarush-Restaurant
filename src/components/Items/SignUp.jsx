@@ -1,5 +1,6 @@
 import { Box, ButtonBase, InputBase, Typography, styled } from '@mui/material'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Image=styled(Box)`
 
@@ -77,6 +78,13 @@ const Order=styled(Box)({
     }
 })
  function SignUp() {
+    const navigate=useNavigate();
+    const handleClick=()=>{
+        navigate('/delivery')
+    }
+    const handleSend=()=>{
+        window.location.reload();
+    }
   return (
     <Image>
         <Heading>
@@ -88,7 +96,7 @@ const Order=styled(Box)({
             <Field placeholder='Email'/>
             <Message placeholder='Message'/>
         </Input>
-        <Btn>
+        <Btn onClick={handleSend}>
             SEND
         </Btn>
         {/* for order  */}
@@ -96,7 +104,7 @@ const Order=styled(Box)({
         <Typography>
             ORDER BEST FOOD AT TIME
         </Typography>
-        <Btn>
+        <Btn onClick={handleClick}>
             ORDER NOW
         </Btn>
         </Order>
