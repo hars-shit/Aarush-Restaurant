@@ -3,8 +3,9 @@ import React, {  useEffect, useState } from 'react'
 import LowerNavbar from '../Navbar/LowerNavbar'
 import {BiSolidBookAdd} from 'react-icons/bi'
 import UperFooter from '../Footer/UperFooter'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import FoodDelivery from './FoodDelivery'
+import { slice1_Pop } from '../../store/slice/breakfastSlice'
 const Container=styled(Box)`
     color:white;
     background: #121212e6;
@@ -49,13 +50,17 @@ const Empty=styled(Box)({
   margin:'0px 20px'
 })
 const Delivery=()=> {
+  const dispatch=useDispatch();
   useEffect(()=>{
   scrollTo(0, 0)
 }, []);
   const [order,setOrder]=useState(false);
     const handleOrder=()=>{
+      dispatch(slice1_Pop(Cart_id))
+
       // if click on new order clear old orders 
-      localStorage.clear();
+      // localStorage.clear();
+      
       // and then refresh the page 
       // window.location.reload();
     }
