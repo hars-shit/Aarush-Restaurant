@@ -57,7 +57,7 @@ const Delivery=()=> {
       // if click on new order clear old orders 
       localStorage.clear();
       // and then refresh the page 
-      window.location.reload();
+      // window.location.reload();
     }
 
   const Cart_id=useSelector(state=>state.breakfastSlice);
