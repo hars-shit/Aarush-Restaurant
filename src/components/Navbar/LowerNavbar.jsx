@@ -1,7 +1,12 @@
-import { AppBar, styled } from '@mui/material'
-import React from 'react'
-import { Link } from 'react-router-dom'
-import {BiSearchAlt2} from 'react-icons/bi'
+import { AppBar, Button, styled } from '@mui/material'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import {MdShoppingCart} from 'react-icons/md'
+import { useDispatch } from 'react-redux'
+import { slice2 } from '../../store/slice/about'
+import { slice3 } from '../../store/slice/contact'
+import { slice5 } from '../../store/slice/shop'
+import { slice4 } from '../../store/slice/service'
 
 const Navbar=styled(AppBar)({
     width: '70%',
@@ -16,12 +21,18 @@ const Navbar=styled(AppBar)({
     '@media (max-width:970px)':{
         display:'none'
     },
+    '@media (max-width:1082px)':{
+        width:'80%'
+    },
 })
 const First=styled('section')({
     width: '78%',
-    float: 'left',
+    display:'flex',
+    justifyContent:'center',
+    alignItems:'center',
+    // float: 'left',
     '& > a':{
-        float: 'left',
+        // float: 'left',
         fontSize: 18,
         textDecoration:'none',
         color: 'rgb(255, 255, 255)',
@@ -30,6 +41,15 @@ const First=styled('section')({
     '& : hover':{
         color: 'rgb(142, 181, 11)',
     }
+    },
+   '& > button':{
+    display:'flex',
+    flexDirection:'column',
+        marginRight:20,
+        textDecoration:'none',
+        fontSize:17.5,
+        color:'white',
+      
     }
 
 })
@@ -47,23 +67,53 @@ align-Items:center;
     & > a{
         margin-right:20px;
         text-decoration:none;
+        font-size:27px;
         color:white;
+      
     }
+   
 `
 const LowerNavbar=()=> {
+    const navigate=useNavigate();
+    const dispatch=useDispatch();
+    const [about,setAbout]=useState(false);
+    const [contact,setContact]=useState(false);
+    const [service,setService]=useState(false);
+    const [shop,setShop]=useState(false);
+    const handleAbout=()=>{
+        setAbout(true)
+       dispatch(slice2(true))
+        // {console.log("about",about)}
+    }
+    const handleContact=()=>{
+        setContact(true)
+       dispatch(slice3(true))
+        // {console.log("about",about)}
+    }
+   
+    const handleShop=()=>{
+        setShop(true)
+       dispatch(slice5(true))
+        // {console.log("about",about)}
+    }
+   
+    const handleService=()=>{
+        setService(true)
+       dispatch(slice4(true))
+        // {console.log("about",about)}
+    }
+   
   return (
     <Navbar position='static'>
         <First>
-            <Link to='/'>Home</Link>
-            <Link to='/blog'>Blog</Link>
-            <Link to='/about'>About</Link>
-            <Link to='/contacts'>Contacts</Link>
-            <Link to='/shop'>Shop</Link>
-            <Link to='/services'>Services</Link>
+            <Button onClick={()=>navigate('/')}>Home</Button>
+            <Button onClick={()=>handleAbout(about)}>About</Button>
+            <Button onClick={()=>handleContact(contact)}>Contact Us</Button>
+            <Button  onClick={()=>navigate('/delivery')}>Shop</Button>
+            <Button onClick={()=>handleService(service)}>Services</Button>
         </First>
         <Search>
-            <Link >Login</Link>
-            <BiSearchAlt2 /> 
+          <Link to={'/delivery'}><MdShoppingCart /></Link>
         </Search>
     </Navbar>
   )

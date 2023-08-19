@@ -1,5 +1,5 @@
 import { Box, ButtonBase, InputBase, Typography, styled } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import {BiSearchAlt2} from 'react-icons/bi'
 import Item from '../Items/Item'
 import Customer from '../Items/Customer'
@@ -7,7 +7,10 @@ import SignUp from '../Items/SignUp'
 import UperFooter from '../Footer/UperFooter'
 import LowerFooter from '../Footer/LowerFooter'
 import { useNavigate } from 'react-router-dom'
-
+import breakfast from '../../DB/breakfast'
+import coffee from '../../DB/coffee'
+import dinner from '../../DB/dinner'
+import drinks from '../../DB/drinks'
 const Header=styled(Box)({
     width: '70%',
     color: 'rgb(255, 255, 255)',
@@ -68,7 +71,7 @@ const InputContainer=styled(Box)({
     display: 'flex',
     alignItems:'center',
     marginTop:50,
-    marginBottom:30,
+    marginBottom:20,
     justifyContent:'space-between',
     padding:'0px 20px',
     background:'white',
@@ -126,13 +129,59 @@ const QuickSearch=styled(Typography)({
     fontSize:35 ,
   }
 })
+const Searched=styled(Box)({
+    display:'flex',
+    flexDirection:'column',
+    justifyContent:'center',
+    border:'1px solid',
+    padding:'5px 5px',
+    width:'30%',
+    alignItems:'center',
+    marginBottom:20,
+    '& > p':{
+        width:'100%',
+        borderBottom:'1px solid',
+        color:'white',
+    }
+})
 const MainFrame=()=> {
+    
+    const [match,setMatch]=useState([]);
+    const handleChange=(e)=>{
+        // replace(/\s+/g,'') to replace spaces 
+       let search=e.target.value.toLowerCase().replace(/\s+/g,'');
+       const newMatch=[];
+        // console.log('value',search)
+        for(let i=0;i<array.length;i++){
+            let title=array[i].title.toLowerCase().replace(/\s+/g,'');
+            if(title.includes(search) ){
+                newMatch.push(array[i].title);
+            }
+        }
+        console.log("match title :",match)
+        setMatch(newMatch)
+    }
+    const array=[...breakfast, ...coffee, ...dinner , ...drinks];
     const navigate=useNavigate();
+    const handleBreakfast=()=>{
+        navigate('/breakfast')
+    }
+    const handleCoffee=()=>{
+        navigate('/coffee')
+    }
+    const handleDinner=()=>{
+        navigate('/dinner')
+    }
+    const handleDrinks=()=>{
+        navigate('/drinks')
+    }
     const handleClick=()=>{
         navigate('/delivery')
     }
+    
   return (
     <Main>
+        {console.log("array",array)}
         {/* for Banner  */}
         <Header>
     <Typography>
@@ -152,9 +201,58 @@ const MainFrame=()=> {
 
 
         <InputContainer>
-        <InputBase placeholder='Search Food'/>
+        <InputBase placeholder='Search Food' onChange={(e)=>handleChange(e)}/>
         <BiSearchAlt2 />
         </InputContainer>
+        {
+            match.length !==0 &&     <Searched>
+
+            {
+            match.length !== 0 && match.map((title,index)=>(
+                
+                breakfast.map((data)=>(
+                data.title===title && <Typography onClick={handleBreakfast}  key={index}>{title}</Typography>
+
+                ))
+               
+            ))
+            
+            }
+                {
+            match.length !== 0 && match.map((title,index)=>(
+                
+                coffee.map((data)=>(
+                data.title===title && <Typography onClick={handleCoffee}  key={index}>{title}</Typography>
+
+                ))
+              
+            ))
+            
+            }
+                {
+            match.length !== 0 && match.map((title,index)=>(
+                
+                dinner.map((data)=>(
+                data.title===title && <Typography onClick={handleDinner}  key={index}>{title}</Typography>
+
+                ))
+             
+            ))
+            
+            }
+                {
+            match.length !== 0 && match.map((title,index)=>(
+                
+                drinks.map((data)=>(
+                data.title===title && <Typography onClick={handleDrinks}  key={index}>{title}</Typography>
+
+                ))
+    
+            ))
+            
+            }
+         </Searched>
+}
 
 
         {/* for order button  */}

@@ -24,7 +24,7 @@ const FoodDelivery=({item}) =>{
     const handleIncrease=()=>{
         setAmout(amount+1);
     }
-    let cost=amount * item.pay
+    let cost=amount * item.pay;
   return (
     <Card sx={{ display: 'flex',width:345,height:140 }} key={item.id}>
     <CardMedia

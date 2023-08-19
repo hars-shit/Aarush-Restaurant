@@ -11,7 +11,7 @@ const Container=styled(Box)`
     color:white;
     background: #121212e6;
     width:100%;
-    height:auto;
+    height:100%;
 `
 const Food=styled(Box)`
 background: '#fafdfb';

@@ -1,11 +1,12 @@
 import { Box, Typography, styled } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import {MdCall,MdLocationOn} from 'react-icons/md'
 import {GrMail} from 'react-icons/gr'
 import {AiFillInstagram,AiFillGoogleCircle} from 'react-icons/ai'
 import {BiLogoTwitter,BiLogoFacebook } from 'react-icons/bi'
 import {GoDotFill} from 'react-icons/go'
+import { useSelector } from 'react-redux'
 const Container=styled(Box)({
     display:'flex',
     flexDirection:'column',
@@ -80,8 +81,18 @@ const Media=styled(Box)({
     
 })
 const UperFooter=()=> {
+    const show=useSelector(state=>state.aboutSlice)
+    const about=useRef(null);
+  
+    if(show && about.current){
+        about.current.scrollIntoView({behavior:'smooth'})
+    }
+   
+    // if(show===true){
+    //     about.current.scrollIntoView({behavior:'smooth'})
+    // }
   return (
-    <Container>
+    <Container ref={about}>
         {/* for established */}
         <Main>
         <Heading>
@@ -93,20 +104,18 @@ const UperFooter=()=> {
         </Main>
 
         {/* for navigation  */}
-        <Main>
+        {/* <Main>
             <Lower>
                 NAVIGATION
             </Lower>
             <Links>
             <Link to='/'><GoDotFill /> Home</Link>
-            <Link to='/blog'><GoDotFill /> Blog</Link>
-            <Link to='/about'><GoDotFill /> About</Link>
-            <Link to='/contacts'><GoDotFill /> Contacts</Link>
-            <Link to='/shop'><GoDotFill /> Shop</Link>
+            <Link onClick={()=>handleRoute(about)}><GoDotFill /> About</Link>
+            <Link to='/delivery'><GoDotFill /> Shop</Link>
             <Link to='/services'><GoDotFill /> Services</Link>
             </Links>
 
-        </Main>
+        </Main> */}
 
         {/* for contact info  */}
         <Main>

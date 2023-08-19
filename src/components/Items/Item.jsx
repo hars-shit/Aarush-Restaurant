@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import Data from "../../DB/data";
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Container = styled(Box)({
     marginTop:40,
@@ -11,8 +12,10 @@ const Container = styled(Box)({
   gap: 50,
  
   gridTemplateColumns: "auto auto auto auto auto auto",
-  '@media (max-width:970px)':{
+ 
+  '@media (max-width:1266px)':{
     gridTemplateColumns: "auto auto auto ",
+    gap:80,
   },
   '@media (max-width:632px)':{
     gridTemplateColumns: "auto auto ",
@@ -65,6 +68,11 @@ const Container = styled(Box)({
 });
 
 const Item = () => {
+  const service=useSelector(state=>state.serviceSlice);
+  const container=useRef(null);
+  if(service && container.current){
+    container.current.scrollIntoView({behavior:'smooth'})
+}
   const navigate=useNavigate();
   const handleClick=(name)=>{
     let route=name.toLowerCase();
@@ -73,7 +81,7 @@ const Item = () => {
 
   }
   return (
-    <Container>
+    <Container ref={container}>
         
       {Data.map((item) => {
         return (

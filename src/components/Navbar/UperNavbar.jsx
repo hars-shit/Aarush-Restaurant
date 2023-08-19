@@ -4,6 +4,9 @@ import styled from "@emotion/styled";
 import {MdCall} from 'react-icons/md'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {IoMdMail} from 'react-icons/io'
+import { useNavigate } from "react-router-dom";
+import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
+import { useDispatch } from "react-redux";
 const Header=styled(AppBar)({
     width: '100%',
     float: 'left',
@@ -80,14 +83,54 @@ const Sidebar=styled(Box)({
     },
      
 })
+const NavItem=styled(Box)({
+  display:'flex',
+  flexDirection:'column',
+  marginLeft:50,
+  gap:15,
+  '& > button':{
+    color:'white',
+    fontSize:22,
+    transition:'0.3s',
+  }
+
+})
 const UperNavbar = () => {
     const [open,setOpen]=useState(false);
+    const navigate=useNavigate();
+    const dispatch=useDispatch();
+    const [about,setAbout]=useState(false);
+    const [contact,setContact]=useState(false);
+    const [service,setService]=useState(false);
+    const [shop,setShop]=useState(false);
+    const handleAbout=()=>{
+        setAbout(true)
+       dispatch(slice2(true))
+        // {console.log("about",about)}
+    }
+    const handleContact=()=>{
+        setContact(true)
+       dispatch(slice3(true))
+        // {console.log("about",about)}
+    }
+   
+    const handleShop=()=>{
+        setShop(true)
+       dispatch(slice5(true))
+        // {console.log("about",about)}
+    }
+   
+    const handleService=()=>{
+        setService(true)
+       dispatch(slice4(true))
+        // {console.log("about",about)}
+    }
 
   return (
     <Fragment>
       <Header position="static">
         <Content className="call-box">
-          <Link href="">
+          <Link href="tel:+9520593613">
           <MdCall /> Call : +9520593613
           </Link>
         </Content>
@@ -99,14 +142,38 @@ const UperNavbar = () => {
         
         </Logo>
         <Content className="call-box">
-          <Link href="">
+          <Link href="mailto:upadhyayharshit05@gmail.com">
           <IoMdMail /> Email : arush14@gmail.com
           </Link>
         </Content>
         <Sidebar>
         <Button onClick={()=>setOpen(true)}><GiHamburgerMenu  /></Button>
-        <Drawer open={open} >
-hii
+        <Drawer 
+        open={open} anchor="right" hideBackdrop={true} variant="persistent"
+        sx={{
+          '& .MuiDrawer-paper':{
+            zIndex: 99999999999999,
+            width:'100%',
+            backgroundColor: 'rgb(0, 0, 0, 0.9)',
+            display:'flex',
+            gap:10,
+            padding:'35px 35px', 
+            
+            
+          }
+        }}
+        
+        >
+          <Box style={{alignSelf:'flex-end'}}>
+        <ClearOutlinedIcon onClick={()=>setOpen(false)} style={{color:"white",fontWeight:700,fontSize:'25px'}}/>
+          </Box>
+          <NavItem>
+        <Button onClick={()=>navigate('/')}>Home</Button>
+            <Button onClick={()=>handleAbout(about)}>About</Button>
+            <Button onClick={()=>handleContact(contact)}>Contact Us</Button>
+            <Button  onClick={()=>navigate('/delivery')}>Shop</Button>
+            <Button onClick={()=>handleService(service)}>Services</Button>
+          </NavItem>
         </Drawer>
         </Sidebar>
       </Header>
