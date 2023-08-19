@@ -7,6 +7,7 @@ import UperFooter from '../Footer/UperFooter'
 import breakfast from '../../DB/breakfast';
 
 import Cards from './Cards';
+import LowerFooter from '../Footer/LowerFooter';
 const Container=styled(Box)`
     color:white;
     background: #121212e6;
@@ -65,7 +66,7 @@ const Breakfast=()=> {
 
 
          <UperFooter />
-        {/* <LowerFooter /> */}
+        <LowerFooter />
     </Container>
   )
 }

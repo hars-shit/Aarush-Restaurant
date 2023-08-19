@@ -4,6 +4,7 @@ import LowerNavbar from '../Navbar/LowerNavbar'
 import UperFooter from '../Footer/UperFooter'
 import Cards from './Cards';
 import drinks from '../../DB/drinks';
+import LowerFooter from '../Footer/LowerFooter';
 const Container=styled(Box)`
     color:white;
     background: #121212e6;
@@ -62,7 +63,7 @@ const Drinks=()=> {
 
 
          <UperFooter />
-        {/* <LowerFooter /> */}
+        <LowerFooter />
     </Container>
   )
 }

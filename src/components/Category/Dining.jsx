@@ -4,6 +4,7 @@ import LowerNavbar from '../Navbar/LowerNavbar'
 import UperFooter from '../Footer/UperFooter'
 import {MdLocationOn,MdCall} from 'react-icons/md'
 import {GrMail } from 'react-icons/gr'
+import LowerFooter from '../Footer/LowerFooter'
 const Container=styled(Box)`
     color:white;
     background: #121212e6;
@@ -121,7 +122,7 @@ const Dining=()=> {
 
 
          <UperFooter />
-        {/* <LowerFooter /> */}
+        <LowerFooter/>
     </Container>
   )
 }

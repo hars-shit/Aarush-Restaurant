@@ -1,11 +1,13 @@
 import { Alert, Box, ButtonBase, Typography, styled } from '@mui/material'
 import React, {  useEffect, useState } from 'react'
 import LowerNavbar from '../Navbar/LowerNavbar'
-import {BiSolidBookAdd} from 'react-icons/bi'
+import {CgPlayListRemove} from 'react-icons/cg'
 import UperFooter from '../Footer/UperFooter'
 import { useDispatch, useSelector } from 'react-redux';
 import FoodDelivery from './FoodDelivery'
+import {MdPlaylistAdd} from 'react-icons/md'
 import { slice1_Pop } from '../../store/slice/breakfastSlice'
+import LowerFooter from '../Footer/LowerFooter'
 const Container=styled(Box)`
     color:white;
     background: #121212e6;
@@ -39,10 +41,14 @@ const Btn=styled(ButtonBase)({
   marginBottom:50,
   height:40,
   borderRadius:17,
+  display:'flex',
+  justifyContent:'center',
+  alignItems:'center',
   border:'2px solid rgb(142, 181, 11)',
   background:'rgb(142, 181, 11)',
   '&>svg':{
-    fontSize:18
+    fontSize:20,
+    marginTop:2,
   }
 })
 
@@ -81,7 +87,9 @@ const Delivery=()=> {
      Place Your Order
     </Typography>
          </Heading>
-         <Btn onClick={handleOrder} ><BiSolidBookAdd />&nbsp; New Order</Btn>
+        {
+          Cart_id.length !==0 ? <Btn onClick={handleOrder} ><CgPlayListRemove />&nbsp; Remove</Btn> :<Btn onClick={handleOrder}><MdPlaylistAdd />&nbsp; Add</Btn>
+        } 
          {/* food section  */}
          <Item>
           {/* <button onClick={handleClick}>click</button> */}
@@ -112,7 +120,7 @@ const Delivery=()=> {
 
 
          <UperFooter />
-        {/* <LowerFooter /> */}
+        <LowerFooter />
     </Container>
   )
 }

@@ -1,6 +1,6 @@
 import { Box, Typography, styled } from '@mui/material'
 import React, { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {MdCall,MdLocationOn} from 'react-icons/md'
 import {GrMail} from 'react-icons/gr'
 import {AiFillInstagram,AiFillGoogleCircle} from 'react-icons/ai'
@@ -73,7 +73,10 @@ const Media=styled(Box)({
     border:'1px solid rgb(255,255,255)',
     width:40,
     height:40,
-    '&> svg':{
+    '&> a':{
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center',
         fontSize:22,
         color: 'rgb(37, 37, 37)'
     }
@@ -81,6 +84,8 @@ const Media=styled(Box)({
     
 })
 const UperFooter=()=> {
+    const navigate=useNavigate();
+   
     const show=useSelector(state=>state.aboutSlice)
     const about=useRef(null);
   
@@ -145,10 +150,10 @@ const UperFooter=()=> {
             DISCOVER
         </Lower>
         <Media>
-       <Box><BiLogoFacebook /></Box> 
-        <Box><AiFillInstagram /></Box>
-        <Box><BiLogoTwitter /></Box>
-        <Box><AiFillGoogleCircle /></Box>
+       <Box ><a href="https://www.facebook.com/harshit.upadhyay.332345"><BiLogoFacebook /></a></Box> 
+        <Box><a href="https://instagram.com/harshitupadhyaya?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D"><AiFillInstagram /></a></Box>
+        <Box><a href="https://twitter.com/i/flow/single_sign_on"><BiLogoTwitter /></a></Box>
+        <Box><a href="https://youtube.com/shorts/qRhO0VDfPsE?si=qzeU60Lu5-gYm-QX"><AiFillGoogleCircle /></a></Box>
         </Media>
         </Main>
        
