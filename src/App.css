@@ -6,7 +6,8 @@ body {
   overflow-x: hidden;
   background-image: url(/assets/body-bg.png) !important;
   height: auto;
-  background-size: 100% 100%;
+  background-position: center;
+  background-size: cover;
   font-family: Sen, sans-serif;
   background-repeat: no-repeat;
   margin: 0;

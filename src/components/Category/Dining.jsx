@@ -1,5 +1,5 @@
 import { Box, Typography, styled } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import LowerNavbar from '../Navbar/LowerNavbar'
 import UperFooter from '../Footer/UperFooter'
 import {MdLocationOn,MdCall} from 'react-icons/md'
@@ -73,7 +73,9 @@ const Request=styled(Typography)({
 })
 const Dining=()=> {
   
- 
+  useEffect(()=>{
+    scrollTo(0, 0)
+  }, []);
  
  
   return (

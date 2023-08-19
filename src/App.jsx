@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
 
 import Navbar from './Pages/Navbar'
@@ -13,7 +13,6 @@ import Drinks from './components/Category/Drinks'
 function App() {
  return(
   <>
-  <BrowserRouter>
   <Navbar />
   <Routes>
     <Route path='/' element={<Home />} />
@@ -25,7 +24,6 @@ function App() {
     <Route path='/dinner' element={<Dinner />} />
     <Route path='/drinks' element={<Drinks />} />
   </Routes>
-  </BrowserRouter>
   {/* <MainPage /> */}
   
   </>

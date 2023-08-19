@@ -4,9 +4,12 @@ import styled from "@emotion/styled";
 import {MdCall} from 'react-icons/md'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {IoMdMail} from 'react-icons/io'
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import { useDispatch } from "react-redux";
+import { slice2 } from "../../store/slice/about";
+import { slice3 } from "../../store/slice/contact";
+import { slice4 } from "../../store/slice/service";
 const Header=styled(AppBar)({
     width: '100%',
     float: 'left',
@@ -96,6 +99,7 @@ const NavItem=styled(Box)({
 
 })
 const UperNavbar = () => {
+  const location=useLocation();
     const [open,setOpen]=useState(false);
     const navigate=useNavigate();
     const dispatch=useDispatch();
@@ -104,26 +108,43 @@ const UperNavbar = () => {
     const [service,setService]=useState(false);
     const [shop,setShop]=useState(false);
     const handleAbout=()=>{
-        setAbout(true)
-       dispatch(slice2(true))
+      // setAbout(true)
+      dispatch(slice2(true))
+      setOpen(false)
         // {console.log("about",about)}
     }
     const handleContact=()=>{
-        setContact(true)
-       dispatch(slice3(true))
+      // setContact(true)
+      dispatch(slice3(true))
+      setOpen(false)
         // {console.log("about",about)}
     }
    
     const handleShop=()=>{
-        setShop(true)
-       dispatch(slice5(true))
+      navigate('/delivery')
+      
+      setOpen(false)
         // {console.log("about",about)}
     }
    
     const handleService=()=>{
-        setService(true)
-       dispatch(slice4(true))
+      // setService(true)
+      dispatch(slice4(true))
+      setOpen(false)
         // {console.log("about",about)}
+    }
+    const handleHome=()=>{
+      if(location.pathname==='/'){
+        setOpen(false)
+      }
+      else {
+         navigate('/');
+         setOpen(false)
+
+      }
+      // console.log(location.pathname)
+
+
     }
 
   return (
@@ -168,10 +189,10 @@ const UperNavbar = () => {
         <ClearOutlinedIcon onClick={()=>setOpen(false)} style={{color:"white",fontWeight:700,fontSize:'25px'}}/>
           </Box>
           <NavItem>
-        <Button onClick={()=>navigate('/')}>Home</Button>
+        <Button onClick={()=>handleHome()}>Home</Button>
             <Button onClick={()=>handleAbout(about)}>About</Button>
             <Button onClick={()=>handleContact(contact)}>Contact Us</Button>
-            <Button  onClick={()=>navigate('/delivery')}>Shop</Button>
+            <Button  onClick={()=>handleShop()}>Shop</Button>
             <Button onClick={()=>handleService(service)}>Services</Button>
           </NavItem>
         </Drawer>

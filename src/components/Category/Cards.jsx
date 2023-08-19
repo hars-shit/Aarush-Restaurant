@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Card, CardContent, CardMedia, IconButton, Typography, styled } from '@mui/material'
 import { useTheme } from '@mui/material/styles';
 import {BiSolidCart,BiSolidCartAdd} from 'react-icons/bi'
@@ -11,8 +11,6 @@ const Purchase=styled(Box)({
     display:'flex',
     alignItems:'center',
     gap:30
-  
-    
   })
 const Cards=({item})=> {
   const dispatch=useDispatch();
@@ -27,6 +25,9 @@ const Cards=({item})=> {
     dispatch(slice1_Push(item))
     console.log("push",item)
   }
+  useEffect(()=>{
+    scrollTo(0, 0)
+  }, []);
     // const theme = useTheme();
   return (
     <Card sx={{ display: 'flex',width:345,height:140 }} key={item.id}>

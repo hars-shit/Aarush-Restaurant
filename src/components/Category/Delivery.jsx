@@ -1,5 +1,5 @@
 import { Alert, Box, ButtonBase, Typography, styled } from '@mui/material'
-import React, {  useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import LowerNavbar from '../Navbar/LowerNavbar'
 import {BiSolidBookAdd} from 'react-icons/bi'
 import UperFooter from '../Footer/UperFooter'
@@ -49,6 +49,9 @@ const Empty=styled(Box)({
   margin:'0px 20px'
 })
 const Delivery=()=> {
+  useEffect(()=>{
+    scrollTo(0, 0)
+  }, []);
   const [order,setOrder]=useState(false);
     const handleOrder=()=>{
       // if click on new order clear old orders 

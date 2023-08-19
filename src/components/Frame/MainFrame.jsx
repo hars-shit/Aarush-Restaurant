@@ -268,7 +268,7 @@ const MainFrame=()=> {
         <Customer />
         <SignUp />
         <UperFooter />
-        {/* <LowerFooter /> */}
+        <LowerFooter />
     </Main>
   )
 }
