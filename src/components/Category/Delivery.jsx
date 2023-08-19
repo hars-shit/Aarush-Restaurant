@@ -50,8 +50,8 @@ const Empty=styled(Box)({
 })
 const Delivery=()=> {
   useEffect(()=>{
-    scrollTo(0, 0)
-  }, []);
+  scrollTo(0, 0)
+}, []);
   const [order,setOrder]=useState(false);
     const handleOrder=()=>{
       // if click on new order clear old orders 
