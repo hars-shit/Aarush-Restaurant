@@ -2,7 +2,7 @@
 ![aarush1](https://github.com/hars-shit/Aarush-Restaurant/assets/78030776/bf79a4a7-4457-41bf-803f-dfa7075b736c)
 
 
-Welcome to the Aarush Restaurant Website project! This is a responsive website created using React, Material-UI, and Redux Toolkit. The website showcases the Aarush Restaurant, providing information about its menu, services, contact details, and more.
+Welcome to the Aarush Restaurant Website project! This is a responsive website created using React, Material-UI,Email.js, and Redux Toolkit. The website showcases the Aarush Restaurant, providing information about its menu, services, contact details, and more.
 
 ## Live Link
 https://aarush-restaurant.vercel.app/
@@ -38,6 +38,7 @@ The website is responsive and user-friendly. Visitors can navigate through the d
 - Material-UI
 - Redux Toolkit
 - React Router
+- Email.js
 - HTML
 - CSS
 
