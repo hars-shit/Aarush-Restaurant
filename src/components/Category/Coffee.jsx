@@ -24,12 +24,22 @@ const Heading=styled(Box)({
     fontWeight:900,
   }
 })
-const Item = styled(Box)({
-  display:'flex',
+const Item = styled(Box)({  
+    display: 'grid',
+    gap: 60,
+    gridTemplateColumns: 'auto auto auto',
   justifyContent:'center',
   flexDirection:'column',
   alignItems:'center',
-  gap:50
+  gap:50,
+  '@media (max-width:1188px)':{
+    gridTemplateColumns: 'auto auto',
+    
+},
+'@media (max-width:772px)':{
+  gridTemplateColumns: 'auto',
+  
+},
 })
 const Coffee=()=> { 
  
